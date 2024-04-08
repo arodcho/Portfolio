@@ -1,0 +1,61 @@
+---
+import LinkedInIcon from "./iconos/LinkedIn.astro";
+import MailIcon from "./iconos/Mail.astro";
+import BadgeLink from "./BadgeLink.astro";
+import Type from "./Type.astro";
+import GitHub from "./iconos/GitHub.astro";
+import Text from "./Text.astro";
+---
+
+<div class="w-100">
+  <div class="flex gap-4 justify-center">
+    <div>
+      <img
+        style="mask-image: linear-gradient(black 80%, transparent);
+      width: 100%; max-width: 11rem; height: auto;"
+        class="shadow-2xl"
+        src="../../public/img/avatar.webp"
+        alt="Álvaro Rodríguez Chofles"
+      />
+    </div>
+  </div>
+  <div>
+    <h1
+      class="text-center font-bold tracking-tight dark:[&>strong]:text-purple-400 [&>strong]:text-purple-500 text-gray-800 sm:text-5xl dark:text-white"
+    >
+      <Text class="text-6xl py-2"
+        ><strong>Álvaro Rodríguez Chofles</strong></Text
+      >
+    </h1>
+    <h2
+      class="text-2xl text-center font-bold tracking-tight text-gray-800 sm:text-xl dark:text-white"
+    >
+      <Type />
+    </h2>
+  </div>
+</div>
+<nav class="flex flex-wrap gap-4 mt-4 justify-center">
+  <BadgeLink href="mailto:ardocho@gmail.com">
+    <MailIcon class="size-4" />
+    arodcho@gmail.com
+  </BadgeLink>
+  <BadgeLink href="https://linkedin.com/in/arodcho">
+    <LinkedInIcon class="size-4" />
+    LinkedIn
+  </BadgeLink>
+  <BadgeLink href="https://github.com/arodcho">
+    <GitHub class="size-4" />
+    Github
+  </BadgeLink>
+</nav>
+<p
+  class="mt-6 text-xl text-center text-white [&>strong]:text-purple-500 [&>strong]:font-semibold"
+>
+  <Text> <strong>Desarrollador Full Stack</strong></Text>
+
+  de Córdoba, España. Con un año de experiencia en el sector de la programación.
+  Especializado en el <Text>
+    <strong>desarrollo de aplicaciones web</strong></Text
+  > con PHP y JavaScript, me encuentro en formación constante con la que ampliar
+  mis conocimientos y descubrir nuevas tecnologías y herramientas.
+</p>

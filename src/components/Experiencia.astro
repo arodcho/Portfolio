@@ -1,0 +1,70 @@
+---
+import Timeline from "./Timeline.astro";
+
+import Text from "../components/Text.astro";
+
+import Jobs from "../components/iconos/Jobs.astro";
+import Backpack from "./iconos/Backpack.astro";
+
+const EDUCACION = [
+  {
+    fecha: "2021 - 2023",
+    titulo: "Técnico Superior en Desarrollo de Aplicaciones Web",
+    compañia: "Medac",
+    descripcion:
+      "Desarrollo de practicas y proyectos en entorno web, utilizando tecnologías como HTML, CSS, JavaScript, React, Node.js, MySQL, PHP, Laravel, entre otras.",
+  },
+  {
+    fecha: "2018 - 2020",
+    titulo: "Bachillerato de Ciencias y Tecnología",
+    compañia: "I.E.S Cárbula",
+    descripcion: "",
+  },
+];
+
+const EXPERIENCIA = [
+  {
+    icono: "Toplevel",
+    fecha: "Marzo 2023 - Marzo 2024",
+    titulo: "Desarrollador Full Stack",
+    compañia: "Toplevel Consultores Tecnológicos SL",
+    descripcion:
+      "Responsable del desarrollo y mantenimiento de aplicaciones web, con un enfoque para su integración en CRM como Sage 50, utilizando frameworks como Laravel y CodeIgniter, además de SQL Server para bases de datos robustas. Experiencia en soporte técnico telefónico y resolución de incidencias informáticas.",
+  },
+];
+---
+
+<div class="flex flex-col md:flex-row">
+  <div class="md:w-1/2">
+    <h2
+      class="flex items-center py-3 justify-center mb-8 text-3xl font-semibold gap-x-3"
+    >
+      <Jobs class="size-8" /><Text>Experiencia</Text>
+    </h2>
+    <ol class="relative mt-16">
+      {
+        EXPERIENCIA.map((experiencia) => (
+          <li class="">
+            <Timeline {...experiencia} />
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+  <div class="md:w-1/2">
+    <h2
+      class="flex items-center py-3 justify-center mb-8 text-3xl font-semibold gap-x-3"
+    >
+      <Backpack class="size-8" /><Text>Educación</Text>
+    </h2>
+    <ol class="relative mt-16">
+      {
+        EDUCACION.map((educacion) => (
+          <li class="">
+            <Timeline {...educacion} />
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</div>

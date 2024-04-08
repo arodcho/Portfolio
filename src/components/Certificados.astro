@@ -1,0 +1,46 @@
+---
+
+
+import Card from "./Card.astro"
+
+
+
+const CERTIFICADOS = [
+  {
+    fecha: "Abril 2023",
+    titulo: "CEFR Level B1",
+    compañia: "Trinity College London",
+   
+  },
+  {
+    fecha: "Abril 2023",
+    titulo: "Curso JavaScript",
+    compañia: "OpenWebinars",
+   
+  },
+  {
+    fecha: "Abril 2023",
+    titulo: "Curso React",
+    compañia: "OpenWebinars",
+  
+  },
+
+
+]
+---
+<div class="grid grid-cols-2 gap-2">
+
+
+{
+  CERTIFICADOS.map((certificado) => (
+    <Card>
+        <h1 class="font-bold text-2xl text-left">{certificado.titulo}</h1>
+        <h2 class="text-md text-left">{certificado.compañia}</h2>
+        <h3 class="block mb-2 text-sm font-normal leading-none text-gray-500 text-left">{certificado.fecha}</h3>
+     
+    </Card>
+  ))
+}
+
+
+</div>

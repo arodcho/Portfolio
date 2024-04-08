@@ -1,0 +1,34 @@
+---
+import Toplevel from './iconos/Toplevel.astro'
+import Text from './Text.astro'
+interface Props {
+  icono?: string
+  titulo: string
+  compañia: string
+  descripcion: string
+  link?: string
+  fecha: string
+}
+
+const {icono, titulo, compañia, descripcion, link, fecha } = Astro.props
+---
+
+
+
+
+<ol class="relative border-s  mx-6 pb-12   border-gray-700">                  
+  <li class="mb-10 ms-6">            
+      <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-purple-900">
+       
+      {icono === "Toplevel" && (
+        <Toplevel class="w-4 h-4" />
+      )}
+     
+      </span>
+      <h3><Text class="text-xl font-bold">{titulo}</Text></h3>
+      <h4 class="text-lg text-white">{compañia}</h4>
+      <time class="block mb-2 text-sm font-normal leading-none text-gray-500 ">{fecha}</time>
+      <p class="mb-4 text-base font-normal text-gray-300">{descripcion}</p>
+     
+  </li>
+  

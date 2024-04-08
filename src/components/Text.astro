@@ -1,0 +1,9 @@
+---
+const { class: className} = Astro.props
+---
+
+<span  
+
+class={` ${className}  inline-flex animate-text-gradient bg-gradient-to-r from-[#c3bcf8] via-[#9e20d8] to-[#c7d2fe] bg-[200%_auto] bg-clip-text  text-transparent`}>
+    <slot/>
+  </span>

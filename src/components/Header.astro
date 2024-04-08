@@ -1,0 +1,105 @@
+---
+const navItems = [
+  {
+    title: "Proyectos",
+    label: "proyectos",
+    url: "/#proyectos",
+  },
+  {
+    title: "Experiencia",
+    label: "experiencia",
+    url: "/#experiencia",
+  },
+  {
+    title: "Certificados",
+    label: "certificados",
+    url: "/#certificados",
+  },
+];
+---
+
+<header
+  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
+>
+  <nav
+    class="flex px-3 gap-6 text-md font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+  >
+    {
+      navItems.map((link) => (
+        <a
+          class="relative block px-2 py-2 transition hover:text-purple-500 dark:hover:text-purple-400"
+          aria-label={link.label}
+          href={link.url}
+          href={link.url}
+        >
+          {link.title}
+        </a>
+      ))
+    }
+  </nav>
+</header>
+
+<script>
+  // Este código agrega un event listener al evento "astro:page-load", que se activa cuando se carga la página Astro.
+  document.addEventListener("astro:page-load", () => {
+    // Selecciona todos los elementos "section" en la página
+    const sections = document.querySelectorAll("section");
+    // Selecciona todos los elementos "a" dentro del elemento "nav" en el encabezado
+    const navItems = document.querySelectorAll("header nav a");
+
+    // Define una función de callback que se llamará cuando se observe una intersección
+    const callback = (entries: any[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Si la sección observada se está intersectando con la ventana gráfica, agrega la clase "text-purple-500" al elemento de navegación correspondiente
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("text-purple-400");
+            } else {
+              item.classList.remove("text-purple-400");
+            }
+          });
+        }
+      });
+    };
+
+    // Crea una instancia de IntersectionObserver con la función de callback definida
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    });
+
+    // Observa cada sección en la página
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Maneja el evento de cambio de visibilidad del documento
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        // Si el documento está oculto, desconecta el observador
+        observer.disconnect();
+      } else {
+        // Si el documento está visible, observa cada sección nuevamente
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      }
+    };
+  });
+</script>
+
+<style>
+  nav {
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+
+  @keyframes nav-shadown {
+    to {
+      @apply shadow-lg ring-1 backdrop-blur dark:bg-gray-800/90 bg-white/10 ring-white/10;
+    }
+  }
+</style>

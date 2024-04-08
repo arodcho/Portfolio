@@ -1,0 +1,128 @@
+---
+import GitHub from "./iconos/GitHub.astro"
+import Laravel from "./iconos/Laravel.astro"
+import Link from "./iconos/Link.astro"
+import React from "./iconos/React.astro"
+import Sass from "./iconos/Sass.astro"
+import Expo from "./iconos/Expo.astro"
+import Tailwind from "./iconos/Tailwind.astro"
+import Bootstrap from "./iconos/Bootstrap.astro"
+import Text from "./Text.astro"
+import BadgeLink from "./BadgeLink.astro"
+
+
+const TAGS = {
+  LARAVEL: {
+    name: "Laravel",
+    class: "bg-black text-white",
+    icon: Laravel,
+  },
+  REACT: {
+    name: "React Native",
+    class: "bg-[#0248] text-white",
+    icon: React,
+  },
+  SASS: {
+    name: "Sass",
+    class: "bg-[#660066] text-white",
+    icon: Sass,
+  },
+  EXPO: {
+    name: "Expo Go",
+    class: "bg-[#FFFF] text-black",
+    icon: Expo,
+  },
+  TAILWIND: {
+    name: "Tailwind",
+    class: "bg-[#026767] text-white",
+    icon: Tailwind,
+  },
+  BOOTSTRAP: {
+    name: "Bootstrap",
+    class: "bg-[#404040] text-white",
+    icon: Bootstrap,
+  },
+}
+const PROYECTOS = [
+  {
+    title: "ALWI",
+    description:
+      "Aplicación móvil desarrollada en React Native mediante Expo Go, para consulta de cartelera por localización, además de gestión y visualización de detalles sobre películas y series",
+    link: "",
+    image: "../../public/img/alwi.webp",
+    tags: [TAGS.REACT, TAGS.EXPO],
+  },
+  {
+    title: "COMPIPISO",
+    description:
+      "Aplicación web para la gestión de la busqueda de alquiler de pisos para estudiantes, así como búsqueda de compañeros de piso, desarrollada en PHP con el framework de Laravel, haciendo uso de herramientas como Sass, Vite y Tailwind, con autenticación de usuarios y un CRUD para gestionar los pisos favoritos",
+    link: "",
+    image: "../../public/img/compipiso.webp",
+    tags: [TAGS.LARAVEL, TAGS.SASS, TAGS.TAILWIND],
+  },
+  {
+    title: "KOMMA",
+    description:
+      "Aplicación web para la gestión de reservas y tareas, desarrollada en PHP con el framework de Laravel, haciendo uso de herramientas como Sass, Vite y Bootstrap, con autenticación de usuarios y respectivos roles, además de funcionalidades para realizar y gestionar las reservas.",
+    link: "",
+    github: "https://github.com/arodcho/Komma",
+    image: "../../public/img/komma.webp",
+    tags: [TAGS.LARAVEL, TAGS.SASS, TAGS.BOOTSTRAP],
+  },
+  
+]
+---
+
+<div class="flex flex-col gap-y-16">
+  {
+    PROYECTOS.map(({ image, title, description, tags, link, github }, index) => (
+    <article class={`flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0 ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+    <div class="w-full md:w-1/2">
+    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+      <img alt="Proyectos " class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+    </div>
+    </div>
+
+    <div class="w-full md:w-1/2 md:max-w-lg">
+    <h3 class="text-2xl font-bold text-purple-400">
+      <Text>{title}</Text>
+    </h3>
+    <div class="flex flex-wrap mt-2">
+      <ul class="flex flex-row mb-2 gap-x-2">
+      {tags.map((tag) => (
+      <li>
+        <span
+        class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+        >
+        <tag.icon class="size-4" />
+        {tag.name}
+        </span>
+      </li>
+      ))}
+      </ul>
+
+      <div class="mt-2 text-gray-300">{description}</div>
+      
+      <footer class="flex items-end justify-start mt-4 gap-x-4">
+      {github && (
+      <BadgeLink href={github}>
+        <GitHub class="size-6" />
+        Código
+      </BadgeLink>
+      )}
+      {link && (
+      <BadgeLink href={link}>
+        <Link class="size-6" />
+        Ver
+      </BadgeLink>
+      )}
+      </footer>
+    </div>
+    </div>
+    </article>
+    ))
+  }
+</div>
+
+
+
